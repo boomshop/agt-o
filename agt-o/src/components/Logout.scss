@@ -1,0 +1,17 @@
+.Logout {
+  display: flex;
+  align-items: center;
+  > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+  }
+  > .Icon {
+    margin-left: 4px;
+    text-align: left;
+
+    &::before {
+      font-size: 18px;
+    }
+  }
+}

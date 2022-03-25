@@ -1,0 +1,17 @@
+@import '../assets/fonts/AGT-O.css';
+
+.Icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+
+  &::before {
+    display: block;
+    font-size: var(--font-size-icon);
+    line-height: var(--font-size-icon);
+    width: var(--font-size-icon);
+    height: var(--font-size-icon);
+    vertical-align: middle;
+  }
+}

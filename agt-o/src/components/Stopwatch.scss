@@ -1,0 +1,70 @@
+.Stopwatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  > .time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40px);
+    font-size: var(--font-size-h1);
+    line-height: 32px;
+    pointer-events: none;
+  }
+
+  > .controls {
+    display: flex;
+    justify-content: center;
+
+    > .set {
+      background: var(--color-red);
+      color: white;
+      padding: 12px;
+
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+
+  }
+
+  > svg {
+    width: 240px;
+    height: 240px;
+    flex: 0 0 240px;
+    margin-bottom: 12px;
+    align-self: center;
+
+    path.base {
+      stroke: rgba(255, 255, 255, 0.25);
+      fill: none;
+
+      &.ms {
+        stroke-width: 1px;
+      }
+      &.seconds {
+        stroke-width: 2px;
+      }
+      &.minutes {
+        stroke-width: 3px;
+      }
+    }
+    path.time {
+      stroke: white;
+      fill: none;
+
+      &.ms {
+        stroke-width: 1px;
+      }
+      &.seconds {
+        stroke-width: 2px;
+      }
+      &.minutes {
+        stroke-width: 3px;
+      }
+    }
+  }
+}

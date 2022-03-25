@@ -1,0 +1,23 @@
+.Blocker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: var(--color-blue);
+  color: white;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > .Icon {
+    &::before {
+      font-size: 80px;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+    }
+  }
+}

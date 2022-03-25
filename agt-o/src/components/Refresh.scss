@@ -1,0 +1,19 @@
+.Refresh {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .track {
+    width: 32px;
+    height: 2px;
+    margin-top: 2px;
+
+    background: rgba(255, 255, 255, 0.3);
+
+    > .bar {
+      height: 100%;
+      background: white;
+      transition: width 1s linear;
+    }
+  }
+}

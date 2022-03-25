@@ -1,0 +1,102 @@
+.CommandTeam {
+  display: flex;
+  align-items: center;
+  padding: var(--gap);
+  height: 96px;
+
+  &:nth-child(even) {
+    background: var(--color-even);
+  }
+
+  > .number {
+    flex: 0 0 64px;
+    font-size: 32px;
+    color: var(--color-gray);
+    align-self: center;
+    text-align: center;
+  }
+
+  > .indicator {
+    width: 12px;
+    height: 100%;
+    flex: 0 0 8px;
+
+    background-color: var(--color-red);
+
+    &.enabled {
+      background-color: var(--color-green);
+    }
+  }
+
+  > .CommandImage {
+    flex: 0 0 128px;
+    margin-right: 12px;
+  }
+
+  > .team {
+    flex: 1 1 50%;
+    max-width: 360px;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+      "name name"
+      "icon points"
+      "paid paid";
+    grid-template-rows: 32px 1fr 24px;
+    grid-template-columns: auto 1fr;
+
+    align-items: center;
+
+    > .name {
+      grid-area: name;
+      font-size: var(--font-size-larger);
+      white-space: nowrap;
+    }
+
+    > .Icon {
+      grid-area: icon;
+      justify-self: end;
+
+      &::before {
+        font-size: var(--font-size-large);
+        height: var(--font-size-large);
+        line-height: var(--font-size-large);
+        width: var(--font-size-large);
+        color: var(--color-gray);
+      }
+    }
+
+    > .points {
+      grid-area: points;
+      line-height: 32px;
+      font-size: var(--font-size-large);
+      color: var(--color-red);
+    }
+
+    > .paid {
+      grid-area: paid;
+      font-size: 0.8em;
+      color: var(--color-gray);
+      > * {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  > .starters {
+    flex: 1 1 50%;
+    height: 100%;
+    max-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .CommandDiscipline {
+    flex: 1 1 6%;
+    height: 100%;
+    min-width: 96px;
+  }
+
+}

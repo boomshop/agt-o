@@ -1,0 +1,91 @@
+.Referee {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+
+  > .List {
+    align-self: stretch;
+  }
+  > .Edit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-blue);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > .title {
+      display: flex;
+      padding-right: 48px;
+      align-items: end;
+      > .number {
+        font-size: var(--font-size-id);
+        margin: 0 8px;
+        opacity: 0.25;
+      }
+      > .name {
+        font-size: var(--font-size-large);
+        display: block;
+        margin: 8px;
+        flex: 1 1 auto;
+      }
+    }
+
+    > .State {
+      margin: 12px;
+    }
+
+    > .Stopwatch {
+
+    }
+
+    > .Points {
+      margin: 0 16px;
+    }
+
+    > .close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--color-red);
+      z-index: 100;
+    }
+
+    > .penalty {
+      display: grid;
+      grid-template-areas:
+        "plabel rlabel ."
+        "penalty reason set";
+      grid-template-columns: 56px minmax(auto, 260px) 64px;
+      grid-gap: var(--gap);
+      margin: 0 16px;
+      justify-content: center;
+
+      > input {
+
+      }
+
+      > .plabel {
+        grid-area: plabel;
+      }
+      > .rlabel {
+        grid-area: rlabel;
+      }
+      > .penalty {
+        grid-area: penalty;
+      }
+      > .reason {
+        grid-area: reason;
+      }
+      > .set {
+        grid-area: set;
+        background: var(--color-red)
+      }
+    }
+  }
+}

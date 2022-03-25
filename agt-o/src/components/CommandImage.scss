@@ -1,0 +1,42 @@
+.CommandImage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+
+  > .image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    border: 3px solid var(--color-light-gray);
+    box-sizing: border-box;
+  }
+
+  > input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  > .Icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    color: var(--color-light-gray);
+
+    &::before {
+      font-size: 48px;
+      line-height: 48px;
+      width: 48px;
+      height: 48px;
+      vertical-align: middle;
+    }
+  }
+}

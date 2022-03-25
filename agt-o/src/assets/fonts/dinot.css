@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "DINOT";
+    font-style: normal;
+    font-weight: normal;
+    src: local("DINOT"), url("DINOT-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "DINOT";
+    font-style: normal;
+    font-weight: bold;
+    src: local("DINOT"), url("DINOT-Bold.ttf") format("truetype");
+}

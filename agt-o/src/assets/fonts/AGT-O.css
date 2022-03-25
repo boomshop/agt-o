@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "AGT-O";
+  font-style: normal;
+  font-weight: normal;
+  src: url("AGT-O.ttf") format("truetype");
+}
+
+.icon.refresh::before              { font-family: 'AGT-O'; content: '񗍄'; }
+.icon.reload::before               { font-family: 'AGT-O'; content: '񗍄'; }
+.icon.logout::before               { font-family: 'AGT-O'; content: '񗍅'; }
+.icon.referee::before              { font-family: 'AGT-O'; content: '񗍆'; }
+.icon.whistle::before              { font-family: 'AGT-O'; content: '񗍆'; }
+.icon.starter::before              { font-family: 'AGT-O'; content: '񗍇'; }
+.icon.mask::before                 { font-family: 'AGT-O'; content: '񗍇'; }
+.icon.discipline::before           { font-family: 'AGT-O'; content: '񗍈'; }
+.icon.stopwatch::before            { font-family: 'AGT-O'; content: '񗍈'; }
+.icon.team::before                 { font-family: 'AGT-O'; content: '񗍉'; }
+.icon.user::before                 { font-family: 'AGT-O'; content: '񗍊'; }
+.icon.save::before                 { font-family: 'AGT-O'; content: '񗍋'; }
+.icon.disk::before                 { font-family: 'AGT-O'; content: '񗍋'; }
+.icon.delete::before               { font-family: 'AGT-O'; content: '񗍌'; }
+.icon.trash::before                { font-family: 'AGT-O'; content: '񗍌'; }
+.icon.passwordgenerator::before    { font-family: 'AGT-O'; content: '񗍍'; }
+.icon.plus::before                 { font-family: 'AGT-O'; content: '񗍎'; }
+.icon.add::before                  { font-family: 'AGT-O'; content: '񗍎'; }
+.icon.cancel::before               { font-family: 'AGT-O'; content: '񗍏'; }
+.icon.close::before                { font-family: 'AGT-O'; content: '񗍏'; }
+.icon.edit::before                 { font-family: 'AGT-O'; content: '񗍐'; }
+.icon.gear::before                 { font-family: 'AGT-O'; content: '񗍐'; }
+.icon.medal::before                { font-family: 'AGT-O'; content: '񗍑'; }
+.icon.points::before               { font-family: 'AGT-O'; content: '񗍑'; }
+.icon.status::before               { font-family: 'AGT-O'; content: '񗍒'; }
+.icon.map::before                  { font-family: 'AGT-O'; content: '񗍓'; }
+.icon.route::before                { font-family: 'AGT-O'; content: '񗍓'; }
+.icon.arrived::before              { font-family: 'AGT-O'; content: '񗍔'; }
+.icon.waiting::before              { font-family: 'AGT-O'; content: '񗍔'; }
+.icon.progress::before             { font-family: 'AGT-O'; content: '񗍕'; }
+.icon.left::before                 { font-family: 'AGT-O'; content: '񗍖'; }
+.icon.exit::before                 { font-family: 'AGT-O'; content: '񗍖'; }
+.icon.brokenimage::before          { font-family: 'AGT-O'; content: '񗍗'; }
+.icon.birthday::before             { font-family: 'AGT-O'; content: '񗍘'; }
+.icon.logo::before                 { font-family: 'AGT-O'; content: '񗍙'; }

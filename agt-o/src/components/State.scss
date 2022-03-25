@@ -1,0 +1,25 @@
+.State {
+  display: flex;
+  justify-content: center;
+
+  > button {
+    border: 1px solid transparent;
+    margin: 4px;
+    text-align: center;
+    flex: 1 1 33%;
+    max-width: 124px;
+
+    > .Icon {
+      display: flex;
+
+      &::before {
+        text-align: center;
+        justify-self: center;
+        font-size: var(--font-size-h1);
+        line-height: 32px;
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+}

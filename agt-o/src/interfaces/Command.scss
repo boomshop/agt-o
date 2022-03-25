@@ -1,0 +1,25 @@
+.Command {
+
+}
+
+header {
+
+  .match {
+
+    button {
+      margin: 0 12px;
+    }
+    button.start {
+      background: var(--color-green);
+      color: white;
+    }
+    button.end {
+      background: var(--color-red);
+      color: white;
+    }
+    button.reopen {
+      background: var(--color-green);
+      color: white;
+    }
+  }
+}

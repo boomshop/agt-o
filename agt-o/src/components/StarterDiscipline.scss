@@ -1,0 +1,87 @@
+.StarterDiscipline {
+  display: grid;
+  grid-template-areas:
+    "number title title title title"
+    "number description description description description"
+    "number pointsi pointsd points points"
+    "number penaltyi penaltyd penalty reason";
+  grid-template-columns: 48px auto auto auto 1fr;
+  grid-gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  align-items: center;
+
+  > .number {
+    grid-area: number;
+    font-size: var(--font-size-id);
+    text-align: center;
+  }
+  > .title {
+    grid-area: title;
+    font-size: var(--font-size-large);
+    display: flex;
+    align-items: baseline;
+
+    > span {
+      white-space: nowrap;
+
+      .Icon::before {
+        font-size: var(--font-size);
+        width: auto;
+        margin-left: 12px;
+      }
+      .status {
+        font-size: var(--font-size-small);
+      }
+    }
+  }
+  > .description {
+    grid-area: description;
+    font-size: var(--font-size-small);
+    opacity: 0.5;
+  }
+  > .pointsd {
+    grid-area: pointsd;
+    opacity: 0.5;
+    font-size: var(--font-size-small);
+  }
+  > .pointsi {
+    grid-area: pointsi;
+    opacity: 0.5;
+    text-align: right;
+    > .Icon::before {
+      font-size: var(--font-size-small);
+      line-height: var(--font-size);
+      height: var(--font-size);
+      width: var(--font-size);
+    }
+  }
+  > .points {
+    grid-area: points;
+    font-size: var(--font-size-large);
+  }
+  > .penaltyd {
+    grid-area: penaltyd;
+    opacity: 0.5;
+    font-size: var(--font-size-small);
+    width: auto;
+  }
+  > .penaltyi {
+    grid-area: penaltyi;
+    opacity: 0.5;
+    > .Icon::before {
+      font-size: var(--font-size);
+      line-height: var(--font-size);
+      height: var(--font-size);
+      width: var(--font-size);
+    }
+  }
+  > .penalty {
+    grid-area: penalty;
+    font-size: var(--font-size-large);
+  }
+  > .reason {
+    grid-area: reason;
+  }
+}

@@ -1,0 +1,17 @@
+.Login {
+  display: grid;
+  grid-template-rows: repeat(1fr, 3);
+  grid-template-columns: auto auto;
+  grid-gap: var(--gap);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  > .warning {
+    grid-column-start: 2;
+  }
+
+  > .submit {
+    grid-column-start: 2;
+  }
+}

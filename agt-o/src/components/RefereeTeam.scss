@@ -1,0 +1,100 @@
+.RefereeTeam {
+  display: grid;
+  grid-template-areas:
+    "number title title title title edit"
+    "number pointsi pointsd points points edit"
+    "number penaltyi penaltyd penalty reason reason";
+  grid-template-columns: 40px 14px auto auto 1fr auto;
+  grid-gap: 8px;
+  align-items: center;
+  padding: 8px;
+
+  .Icon.user::before {
+    font-size: var(--font-size-large);
+    line-height: var(--font-size-large);
+    height: var(--font-size-large);
+    width: var(--font-size-large);
+    color: var(--color-blue);
+  }
+
+  > .id {
+    grid-area: number;
+    text-align: center;
+  }
+  > .title {
+    grid-area: title;
+    display: flex;
+    align-items: baseline;
+
+    > .title {
+      flex: 1 1 auto;
+      font-size: var(--font-size-large);
+    }
+    > .state {
+      white-space: nowrap;
+      flex: 0 0 auto;
+      padding: 2px 4px;
+      border-radius: var(--border-radius);
+
+      .Icon::before {
+        font-size: var(--font-size);
+        line-height: var(--font-size);
+        height: var(--font-size);
+        width: auto;
+      }
+      .status {
+        font-size: 0.8em;
+      }
+    }
+  }
+  > .pointsd {
+    grid-area: pointsd;
+    opacity: 0.5;
+    font-size: var(--font-size-small);
+  }
+  > .pointsi {
+    grid-area: pointsi;
+    opacity: 0.5;
+
+    > .Icon::before {
+      font-size: var(--font-size);
+      line-height: var(--font-size);
+      height: var(--font-size);
+      width: var(--font-size);
+    }
+  }
+  > .points {
+    grid-area: points;
+    font-size: var(--font-size-large);
+  }
+  > .penaltyd {
+    grid-area: penaltyd;
+    color: var(--color-red);
+    font-size: var(--font-size-small);
+    width: auto;
+  }
+  > .penaltyi {
+    grid-area: penaltyi;
+    color: var(--color-red);
+    > .Icon::before {
+      font-size: var(--font-size);
+      line-height: var(--font-size);
+      height: var(--font-size);
+      width: var(--font-size);
+    }
+  }
+  > .penalty {
+    grid-area: penalty;
+    font-size: var(--font-sizelarge);
+    color: var(--color-red);
+  }
+  > .reason {
+    grid-area: reason;
+    color: var(--color-red);
+  }
+  > .edit {
+    justify-self: end;
+    align-self: start;
+    grid-area: edit;
+  }
+}
