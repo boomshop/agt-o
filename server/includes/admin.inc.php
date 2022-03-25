@@ -104,6 +104,30 @@ function handleRequest($data, $user, $role) {
       $SQL->query('DELETE FROM valuations WHERE discipline = ' . $SQL->escape($data['id']));
       $error = $SQL->lastError();
       break;
+
+    case 'fullReset':
+      $SQL->query('DELETE FROM disciplines');
+      $SQL->query('DELETE FROM valuations');
+      $SQL->query('DELETE FROM progress');
+      $SQL->query('DELETE FROM referees');
+      $SQL->query('DELETE FROM teams');
+      $SQL->query('DELETE FROM starters');
+      $SQL->query('DELETE FROM users WHERE ID > 1');
+
+      $SQL->query('ALTER TABLE disciplines AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE valuations AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE progress AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE referees AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE teams AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE starters AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE users AUTO_INCREMENT=2');
+
+      $SQL->query('UPDATE config SET value=\'\' WHERE name=\'started\'');
+      $SQL->query('UPDATE config SET value=\'\' WHERE name=\'ended\'');
+
+      $SQL->query('UPDATE users SET password=\'' . generatePassword('admin') . '\', login=\'admin\', name=\'Administrator\', role=\'admin\' WHERE ID=1');
+
+      break;
   }
 
   // return ['model' => getModel($user, $role), 'sql' => $error, 'query' => $query];
