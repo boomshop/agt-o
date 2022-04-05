@@ -45,11 +45,14 @@ export default function AdminDiscipline(props) {
   }
 
   function remove() {
-    request({
-      action: 'removeDiscipline',
-      id: props.id,
-    });
-    setEdit(false);
+    const conf = window.confirm('SICHER? Diese Aktion löscht die Disziplin #' + props.number + ' "' + props.name + '" aus der Datenbank.')
+    if (conf) {
+      request({
+        action: 'removeDiscipline',
+        id: props.id,
+      });
+      setEdit(false);
+    }
   }
 
   function changeName(e) {

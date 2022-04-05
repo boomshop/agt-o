@@ -34,11 +34,14 @@ export default function AdminReferee(props) {
   }
 
   function remove() {
-    request({
-      action: 'removeReferee',
-      id: props.id,
-    });
-    setEdit(false);
+    const conf = window.confirm('SICHER? Diese Aktion entzieht "' + currentUser.name + '" den Schiedsrichterstatus für Disziplin #' + currentDiscipline.number + '.')
+    if (conf) {
+      request({
+        action: 'removeReferee',
+        id: props.id,
+      });
+      setEdit(false);
+    }
   }
 
   function changeUser(e) {

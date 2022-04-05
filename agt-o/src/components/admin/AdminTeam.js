@@ -37,11 +37,14 @@ export default function AdminTeam(props) {
   }
 
   function remove() {
-    request({
-      action: 'removeTeam',
-      id: props.id,
-    });
-    setEdit(false);
+    const conf = window.confirm('SICHER? Diese Aktion löscht das Team "' + props.name + '" aus der Datenbank.')
+    if (conf) {
+      request({
+        action: 'removeTeam',
+        id: props.id,
+      });
+      setEdit(false);
+    }
   }
 
   function changeName(e) {

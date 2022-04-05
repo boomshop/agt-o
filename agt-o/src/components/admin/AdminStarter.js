@@ -52,11 +52,14 @@ export default function AdminStarter(props) {
   }
 
   function remove() {
-    request({
-      action: 'removeStarter',
-      id: props.id,
-    });
-    setEdit(false);
+    const conf = window.confirm('SICHER? Diese Aktion entzieht "' + currentUser.name + '" den Teilnehmerstatus.')
+    if (conf) {
+      request({
+        action: 'removeStarter',
+        id: props.id,
+      });
+      setEdit(false);
+    }
   }
 
   function changeUser(e) {

@@ -44,11 +44,14 @@ export default function AdminUser(props) {
   }
 
   function remove() {
-    request({
-      action: 'removeUser',
-      id: props.id,
-    });
-    setEdit(false);
+    const conf = window.confirm('SICHER? Diese Aktion löscht den Benutzer "' + props.name + '" aus der Datenbank.')
+    if (conf) {
+      request({
+        action: 'removeUser',
+        id: props.id,
+      });
+      setEdit(false);
+    }
   }
 
   function changeName(e) {
