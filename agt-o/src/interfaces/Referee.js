@@ -113,7 +113,7 @@ export default function Referee(props) {
           <Refresh onRefresh={ v => request({ action: 'data' }) } timeout="10" />
         </div>
         {
-          nav !== 'map' ?
+          discipline && nav !== 'map' ?
           <div className="bottom">
             <h2>{ '(S' + discipline.number + ') ' + discipline.name + '' }</h2>
           </div>
