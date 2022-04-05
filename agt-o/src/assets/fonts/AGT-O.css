@@ -40,3 +40,5 @@
 .icon.brokenimage::before          { font-family: 'AGT-O'; content: '񗍗'; }
 .icon.birthday::before             { font-family: 'AGT-O'; content: '񗍘'; }
 .icon.logo::before                 { font-family: 'AGT-O'; content: '񗍙'; }
+.icon.false::before                { font-family: 'AGT-O'; content: '񗍚'; }
+.icon.true::before                 { font-family: 'AGT-O'; content: '񗍛'; }
