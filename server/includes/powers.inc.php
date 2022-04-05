@@ -16,6 +16,7 @@ $_POWERS['admin'] = [
   'removeDiscipline',
   'editDiscipline',
   'fullReset',
+  'gameReset',
 ];
 
 $_POWERS['referee'] = [

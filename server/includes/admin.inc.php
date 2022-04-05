@@ -126,7 +126,17 @@ function handleRequest($data, $user, $role) {
       $SQL->query('UPDATE config SET value=\'\' WHERE name=\'ended\'');
 
       $SQL->query('UPDATE users SET password=\'' . generatePassword('admin') . '\', login=\'admin\', name=\'Administrator\', role=\'admin\' WHERE ID=1');
+      break;
 
+    case 'gameReset':
+      $SQL->query('DELETE FROM valuations');
+      $SQL->query('DELETE FROM progress');
+
+      $SQL->query('ALTER TABLE valuations AUTO_INCREMENT=1');
+      $SQL->query('ALTER TABLE progress AUTO_INCREMENT=1');
+
+      $SQL->query('UPDATE config SET value=\'\' WHERE name=\'started\'');
+      $SQL->query('UPDATE config SET value=\'\' WHERE name=\'ended\'');
       break;
   }
 

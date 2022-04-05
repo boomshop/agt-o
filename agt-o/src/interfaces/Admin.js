@@ -69,11 +69,20 @@ export default function Admin(props) {
   if (data)
     data.map((v, i) => entries.push(React.createElement(element, { ...v, ...add, key: 'entry' + i, request: request, mode: 'edit' })));
 
-  function handleReset(e) {
+  function handleFullReset(e) {
     const conf = window.confirm('SICHER? Diese Aktion löscht ALLE Daten aus der Datenbank und setzt Login und Passwort des Administrators auf "admin" zurück.')
     if (conf) {
       request({
         action: 'fullReset',
+      });
+    }
+  }
+
+  function handleGameReset(e) {
+    const conf = window.confirm('SICHER? Diese Aktion löscht ALLE spielbezogenen Daten (Bewertungen, Fortschritt, Spielstart und -ende) aus der Datenbank.')
+    if (conf) {
+      request({
+        action: 'gameReset',
       });
     }
   }
@@ -89,7 +98,8 @@ export default function Admin(props) {
             {name: 'Teilnehmer', icon: 'starter', value: 'starters'},
             {name: 'Schiedsrichter', icon: 'referee', value: 'referees'},
           ] } active={ nav } onSwitch={ setNav }/>
-          <button onClick={ handleReset } className="reset">RESET</button>
+          <button onClick={ handleFullReset } className="reset">FULL-RESET</button>
+          <button onClick={ handleGameReset } className="reset">SPIEL-RESET</button>
           <Logout user={ props.user } onLogout={ v => request({ action: 'logout' }) }/>
           <Refresh onRefresh={ v => request({ action: 'data' }) } timeout="10" />
         </div>
