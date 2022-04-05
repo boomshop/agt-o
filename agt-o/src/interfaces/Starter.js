@@ -12,10 +12,12 @@ export default function Starter(props) {
   const [ nav, setNav ] = useState('disciplines');
 
   const disciplines = [];
-  props.model.disciplines.map((v, i) => {
-      disciplines.push(<StarterDiscipline data={ v } key={ 'item' + i }/>);
-    return null;
-  });
+  if (props.model.disciplines) {
+    props.model.disciplines.map((v, i) => {
+        disciplines.push(<StarterDiscipline data={ v } key={ 'item' + i }/>);
+      return null;
+    });
+  }
 
   const Map = props.config ?  <iframe title="map" src={ props.config.map } /> : null;
 
@@ -31,12 +33,12 @@ export default function Starter(props) {
           <Refresh onRefresh={ v => request({ action: 'data' }) } timeout="10" />
         </div>
         <div className="bottom">
-          <h2>{ props.model.team.name }</h2>
+          <h2>{ props.model.team ? props.model.team.name : '(Kein Team zugewiesen)' }</h2>
         </div>
       </header>
       <div className="Starter">
         {
-          nav === 'disciplines' ? <>
+          nav === 'disciplines' && props.model.disciplines ? <>
             <Blocker config={ config } />
             <Progress data={ props.model.disciplines }/>
 
