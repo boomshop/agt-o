@@ -23,7 +23,7 @@ export default function Referee(props) {
   const entries = [];
   let discipline;
 
-  if (disciplines.length > 1) {
+  if (disciplines.length) {
     disciplines.map((v, i) => {
       navigation.push({
         name: 'S' + v.number,
@@ -50,7 +50,7 @@ export default function Referee(props) {
   navigation.push({
     icon: 'map',
     value: 'map',
-  })
+  });
 
   function onEdit(data) {
     setEdit(data);
