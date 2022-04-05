@@ -153,28 +153,24 @@ h2 {
   color: var(--color-red);
   font-weight: bold;
 }
-
-.true::after {
-  content: "☑";
-  background: var(--color-true);
+.true::after,
+.false::after {
+  text-align: center;
   color: white;
   width: 1em;
   height: 1em;
-  line-height: 1em;
+  line-height: 0.85em;
   display: inline-block;
   padding: 1px;
   font-weight: bold;
 }
+.true::after {
+  content: "☑";
+  background: var(--color-true);
+}
 .false::after {
   content: "☒";
   background: var(--color-false);
-  color: white;
-  width: 1em;
-  height: 1em;
-  line-height: 1em;
-  display: inline-block;
-  padding: 1px;
-  font-weight: bold;
 }
 
 .cancel {
