@@ -11,13 +11,13 @@ export default function CommandDiscipline(props) {
 
       <span className="points">
         <Icon>medal</Icon>
-        <span className="points">{ parseInt(data.points) ? parseInt(data.points) * parseFloat(discipline.multiplier) + ' (' + data.points + ')' : '--' }</span>
+        <span className="points">{ parseInt(data.points) ? (parseInt(data.points) * parseFloat(discipline.multiplier)) + ' (' + data.points + ')' : '--' }</span>
       </span>
       {
         parseInt(data.penalty) ? <>
           <span className="penalty">
             <Icon>referee</Icon>
-            <span className="penalty">{ parseInt(data.penalty) ? parseInt(data.penalty) * parseFloat(discipline.faults) + ' (' + data.penalty + ')' : '--' }</span>
+            <span className="penalty">{ parseInt(data.penalty) ? (parseInt(data.penalty) * parseFloat(discipline.faults)) + ' (' + data.penalty + ')' : '--' }</span>
           </span>
           <span className="reason">{ data.reason }</span>
         </> : null
