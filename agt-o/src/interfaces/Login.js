@@ -36,7 +36,7 @@ export default function Login(props) {
       <div className="Login">
 
         {
-          failed ? <span class="warning">Login fehlgeschlagen</span> : null
+          failed ? <span className="warning">Login fehlgeschlagen</span> : null
         }
         <span>Login</span>
         <input type="text" ref={ login } size="10" onKeyDown={ onKeyDown } />
