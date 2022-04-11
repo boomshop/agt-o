@@ -51,8 +51,15 @@ export default function AdminStarter(props) {
     setEdit(false);
   }
 
+  const userOptions = [<option value="0" key="noitem">Kein Benutzer</option>];
+  _users.map((v, i) => { userOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });
+
+  let currentUser;
+  _users.map((v, i) => { if (v.id === props.user) currentUser = v; return null; });
+
   function remove() {
-    const conf = window.confirm('SICHER? Diese Aktion entzieht "' + currentUser.name + '" den Teilnehmerstatus.')
+    const name = currentUser ? currentUser.name : '[Unbekannter Benutzer]';
+    const conf = window.confirm('SICHER? Diese Aktion entzieht "' + name + '" den Teilnehmerstatus.');
     if (conf) {
       request({
         action: 'removeStarter',
@@ -81,12 +88,6 @@ export default function AdminStarter(props) {
   function changeBirthday(e) {
     setBirthday(e);
   }
-
-  const userOptions = [<option value="0" key="noitem">Kein Benutzer</option>];
-  _users.map((v, i) => { userOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });
-
-  let currentUser;
-  _users.map((v, i) => { if (v.id === props.user) currentUser = v; return null; });
 
   const teamOptions = [<option value="0" key="noitem">Kein Team</option>];
   teams.map((v, i) => { teamOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });

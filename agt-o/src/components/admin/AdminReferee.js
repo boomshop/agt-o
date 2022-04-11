@@ -33,8 +33,16 @@ export default function AdminReferee(props) {
     setEdit(false);
   }
 
+  const userOptions = [<option value="0" key="noitem">Kein Benutzer</option>];
+  _users.map((v, i) => { userOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });
+
+  let currentUser;
+  _users.map((v, i) => { if (v.id === props.user) currentUser = v; return null; });
+
   function remove() {
-    const conf = window.confirm('SICHER? Diese Aktion entzieht "' + currentUser.name + '" den Schiedsrichterstatus für Disziplin #' + currentDiscipline.number + '.')
+    const name = currentUser ? currentUser.name : '[Unbekannter Benutzer]';
+    const number = currentDiscipline ? currentDiscipline.number : '[Unbekannte Disziplin]';
+    const conf = window.confirm('SICHER? Diese Aktion entzieht "' + name + '" den Schiedsrichterstatus für Disziplin #' + number + '.')
     if (conf) {
       request({
         action: 'removeReferee',
@@ -52,12 +60,6 @@ export default function AdminReferee(props) {
     const n = e.target.value;
     setDiscipline(n);
   }
-
-  const userOptions = [<option value="0" key="noitem">Kein Benutzer</option>];
-  _users.map((v, i) => { userOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });
-
-  let currentUser;
-  _users.map((v, i) => { if (v.id === props.user) currentUser = v; return null; });
 
   const disciplineOptions = [<option value="0" key="noitem">Keine Disziplin</option>];
   disciplines.map((v, i) => { disciplineOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });
