@@ -62,7 +62,7 @@ export default function AdminReferee(props) {
   }
 
   const disciplineOptions = [<option value="0" key="noitem">Keine Disziplin</option>];
-  disciplines.map((v, i) => { disciplineOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ v.name }</option>); return null; });
+  disciplines.map((v, i) => { disciplineOptions.push(<option value={ v.id } key={ 'item' + v.id }>{ '#' + v.number + ' - ' + v.name }</option>); return null; });
 
   let currentDiscipline;
   disciplines.map((v, i) => { if (v.id === props.discipline) currentDiscipline = v; return null; });
@@ -82,7 +82,7 @@ export default function AdminReferee(props) {
       <span className="label">Disziplin</span>
       {
         edit || mode === 'add' ? <select value={ discipline || 0 } onChange={ changeDiscipline }>{ disciplineOptions }</select>
-        : <span>{ currentDiscipline ? currentDiscipline.name : 'keine' }</span>
+        : <span>{ currentDiscipline ? '#' + currentDiscipline.number + ' - ' + currentDiscipline.name : 'keine' }</span>
       }
 
       <div className="buttons">
