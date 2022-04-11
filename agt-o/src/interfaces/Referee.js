@@ -7,6 +7,7 @@ import Navigation from '../components/Navigation.js';
 import RefereeTeam from '../components/RefereeTeam.js';
 import Stopwatch from '../components/Stopwatch.js';
 import Points from '../components/Points.js';
+import Number from '../components/Number.js';
 import { useState } from 'react';
 import Blocker from '../components/Blocker.js';
 
@@ -78,7 +79,7 @@ export default function Referee(props) {
   }
 
   function changePenalty(e) {
-    setPenalty(parseFloat(e.target.value) || 0);
+    setPenalty(e);
   }
   function changeReason(e) {
     setReason(e.target.value);
@@ -102,6 +103,8 @@ export default function Referee(props) {
       points: points || 0,
     });
   }
+console.log(edit, reason, penalty)
+  const cls = edit && edit.reason === reason && parseFloat(edit.penalty) === parseFloat(penalty) ? 'disabled set' : 'set';
 
   const Map = props.config ? <iframe title="map" src={ props.config.map } /> : null;
 
@@ -150,10 +153,10 @@ export default function Referee(props) {
                   }
                   <div className="penalty">
                   <span className="plabel">Strafe</span>
-                  <input onChange={ changePenalty } type="number" value={ penalty } className="penalty" size="1" />
+                  <Number onChange={ changePenalty } value={ penalty } />
                   <span className="rlabel">Grund</span>
                   <input onChange={ changeReason } type="text" value={ reason } className="reason" size="1" />
-                  <button className='set' onClick={ handlePenalty }>Setzen</button>
+                  <button className={ cls } onClick={ handlePenalty }>Setzen</button>
                   </div>
                   <State onSwitch={ switchState } value={ edit.state }/>
                 </div> : null

@@ -1,0 +1,24 @@
+.Number {
+  display: flex;
+
+  > .minus {
+    background: rgba(255, 255, 255, 0.25);
+    font-size: var(--font-size-large);
+    width: 32px;
+    flex: 0 0 32px;
+    border: 1px solid white;
+  }
+  > .plus {
+    background: rgba(255, 255, 255, 0.25);
+    font-size: var(--font-size-large);
+    width: 32px;
+    flex: 0 0 32px;
+    border: 1px solid white;
+  }
+  > input {
+    margin: 0 4px;
+    width: 100%;
+    min-width: 0;
+    max-width: 214px;
+  }
+}

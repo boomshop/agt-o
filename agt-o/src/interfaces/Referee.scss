@@ -61,7 +61,7 @@
       grid-template-areas:
         "plabel rlabel ."
         "penalty reason set";
-      grid-template-columns: 56px minmax(auto, 260px) 64px;
+      grid-template-columns: 128px minmax(auto, 188px) 64px;
       grid-gap: var(--gap);
       margin: 0 16px;
       justify-content: center;
@@ -76,7 +76,7 @@
       > .rlabel {
         grid-area: rlabel;
       }
-      > .penalty {
+      > .Number {
         grid-area: penalty;
       }
       > .reason {

@@ -17,4 +17,19 @@
     margin-left: var(--gap);
     background: var(--color-red);
   }
+  > .Number {
+    margin-right: 24px;
+
+    > .plus {
+      font-size: var(--font-size-huge);
+      flex: 0 0 48px;
+    }
+    > .minus {
+      font-size: var(--font-size-huge);
+      flex: 0 0 48px;
+    }
+    > input {
+      font-size: var(--font-size-huge);
+    }
+  }
 }
