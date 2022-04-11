@@ -4,18 +4,21 @@ import Refresh from '../components/Refresh.js';
 import CommandTeam from '../components/CommandTeam.js';
 import moment from 'moment';
 
-function notReady (teams) {
+function canStart (teams) {
   for (let i = 0, m = teams.length; i < m; ++i ) {
+    let start = true;
     const team = teams[i];
     if (team.paid !== '1')
-      return true;
+      start = false;
     if (!team.image)
-      return true;
+      start = false;
     for (let j = 0, n = team.starters.length; j < n; ++j ) {
       const starter = team.starters[j];
       if (starter.g263 !== '1' || starter.disclaimer !== '1')
-        return true;
+        start = false;
     }
+    if (start)
+      return true;
   }
 }
 export default function Command(props) {
@@ -60,12 +63,12 @@ export default function Command(props) {
   } else if(config.started) {
     matchtext = "Der Wettkampf wurde " + moment(parseInt(config.started)).format('HH:mm:ss DD.MM.YYYY') + " gestartet."
     matchbutton = <button onClick={ handleEnd } className="end">Wettkampf beenden</button>
-  } else if (notReady(model.teams)) {
-    matchtext = <>Der Wettkampf kann nicht starten. <span className="red">Bitte zuerst die Probleme in den rot markierten Teams beheben.</span></>;
-    matchbutton = null;
-  } else {
+  } else if (canStart(model.teams)) {
     matchtext = "Der Wettkampf hat noch nicht begonnen.";
     matchbutton = <button onClick={ handleStart } className="start">Wettkampf starten</button>
+  } else {
+    matchtext = <>Der Wettkampf kann nicht starten. <span className="red">Bitte zunächst zumindest ein Team startklar machen (alle Haken grün, Foto).</span></>;
+    matchbutton = null;
   }
 
   return (
