@@ -16,7 +16,7 @@ export default function CommandDiscipline(props) {
 
       <span className="points">
         <Icon>medal</Icon>
-        <span className="points">{ points } <span class="small">{ pointsdetails }</span></span>
+        <span className="points">{ points } <span className="small">{ pointsdetails }</span></span>
       </span>
       {
         parseInt(data.penalty) ? <>
