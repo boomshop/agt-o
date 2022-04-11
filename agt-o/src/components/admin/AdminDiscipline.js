@@ -16,6 +16,7 @@ export default function AdminDiscipline(props) {
   const [ number, setNumber ] = useState(props.number);
   const [ type, setType ] = useState(props.type);
   const [ multiplier, setMultiplier ] = useState(props.multiplier);
+  const [ faults, setFaults ] = useState(props.multiplier);
 
   function editMode(state) {
     if (state) {
@@ -24,6 +25,7 @@ export default function AdminDiscipline(props) {
       setNumber(props.number);
       setType(props.type);
       setMultiplier(props.multiplier);
+      setFaults(props.faults);
     }
     setEdit(state);
   }
@@ -39,6 +41,7 @@ export default function AdminDiscipline(props) {
     if (number) { req.number = number; }
     if (type) { req.type = type; }
     if (multiplier) { req.multiplier = multiplier; }
+    if (faults) { req.faults = faults; }
 
     request(req);
     setEdit(false);
@@ -74,6 +77,10 @@ export default function AdminDiscipline(props) {
   function changeType(e) {
     const n = e.target.value;
     setType(n);
+  }
+  function changeFaults(e) {
+    const n = e.target.value;
+    setFaults(n);
   }
 
 
@@ -114,6 +121,12 @@ export default function AdminDiscipline(props) {
       {
         edit || mode === 'add' ? <input type="text" value={ multiplier } onChange={ changeMultiplier }/>
         : <span>{ props.multiplier }</span>
+      }
+
+      <span className="label">Punkte pro Fehler</span>
+      {
+        edit || mode === 'add' ? <input type="text" value={ faults } onChange={ changeFaults }/>
+        : <span>{ props.faults }</span>
       }
 
       <div className="buttons">

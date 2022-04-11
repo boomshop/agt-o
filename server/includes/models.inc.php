@@ -15,7 +15,7 @@ function getAdminModel() {
   $model = [];
   $model['users'] = $SQL->fetchMultiple('SELECT ID as id, name, login, role FROM users');
   $model['starters'] = $SQL->fetchMultiple('SELECT ID as id, team, user, disclaimer, g263, birthday FROM starters');
-  $model['disciplines'] = $SQL->fetchMultiple('SELECT ID as id, name, description, number, type, multiplier FROM disciplines');
+  $model['disciplines'] = $SQL->fetchMultiple('SELECT ID as id, name, description, number, type, multiplier, faults FROM disciplines');
   $model['referees'] = $SQL->fetchMultiple('SELECT ID as id, user, discipline FROM referees');
   $model['teams'] = $SQL->fetchMultiple('SELECT ID as id, name, image, paid, number FROM teams');
   return $model;
@@ -24,7 +24,7 @@ function getAdminModel() {
 function getCommandModel() {
   global $SQL, $_CONFIG;
   $model = [];
-  $model['disciplines'] = $SQL->fetchMultiple('SELECT ID as id, name, type, description, multiplier, number FROM disciplines ORDER BY number');
+  $model['disciplines'] = $SQL->fetchMultiple('SELECT ID as id, name, type, description, multiplier, faults, number FROM disciplines ORDER BY number');
   $model['teams'] = $SQL->fetchMultiple('SELECT ID as id, name, image, number, paid FROM teams ORDER BY number');
   foreach ($model['teams'] as $key => $value) {
     $TID = $value['id'];
@@ -73,7 +73,7 @@ function getRefereeModel($ID) {
   $model['disciplines'] = $SQL->fetchMultiple('SELECT discipline FROM referees WHERE user = ' . $ID);
   foreach ($model['disciplines'] as $key => $value) {
     $DID = $value['discipline'];
-    $model['disciplines'][$key] = $SQL->fetchArray('SELECT ID as id, name, type, description, number FROM disciplines WHERE ID = ' . $DID);
+    $model['disciplines'][$key] = $SQL->fetchArray('SELECT ID as id, name, type, description, number, faults, multiplier FROM disciplines WHERE ID = ' . $DID);
     $query = <<<EOD
       SELECT
       teams.ID as id,
@@ -109,6 +109,7 @@ function getStarterModel($ID) {
         disciplines.number,
         disciplines.type,
         disciplines.multiplier,
+        disciplines.faults,
         progress.state,
         valuations.points,
         valuations.penalty,

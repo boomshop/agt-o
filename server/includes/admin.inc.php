@@ -87,12 +87,12 @@ function handleRequest($data, $user, $role) {
       break;
 
     case 'addDiscipline':
-      $query = $SQL->buildInsertQuery('disciplines', [ 'name'=>$data['name'], 'description'=>$data['description'], 'number'=>$data['number'], 'multiplier'=>$data['multiplier'], 'type'=>$data['type'] ]);
+      $query = $SQL->buildInsertQuery('disciplines', [ 'name'=>$data['name'], 'description'=>$data['description'], 'number'=>$data['number'], 'multiplier'=>$data['multiplier'], 'type'=>$data['type'], 'faults'=>$data['faults'] ]);
       $SQL->query($query);
       $error = $SQL->lastError();
       break;
     case 'editDiscipline':
-      $d = [ 'name'=>$data['name'], 'description'=>$data['description'], 'number'=>$data['number'], 'multiplier'=>$data['multiplier'], 'type'=>$data['type'] ];
+      $d = [ 'name'=>$data['name'], 'description'=>$data['description'], 'number'=>$data['number'], 'multiplier'=>$data['multiplier'], 'type'=>$data['type'], 'faults'=>$data['faults'] ];
       $query = $SQL->buildUpdateQuery('disciplines', $d, 'WHERE ID = ' . $SQL->escape($data['id']));
       $SQL->query($query);
       $error = $SQL->lastError();
