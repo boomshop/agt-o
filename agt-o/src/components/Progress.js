@@ -17,7 +17,7 @@ export default function Progress(props) {
     data.push({name: v.name, value: 1, number: v.number });
     colors.push(COLORS[v.state || 'default']);
       result -= (parseFloat(v.points || 0) * parseFloat(v.multiplier || 1));
-      result -= parseFloat(v.penalty || 0);
+      result -= (parseFloat(v.penalty || 0) * parseFloat(v.faults || 1));
     return null;
   });
 

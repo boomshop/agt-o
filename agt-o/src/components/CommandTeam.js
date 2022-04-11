@@ -12,7 +12,7 @@ export default function CommandTeam(props) {
   let points = 1000;
   data.disciplines.map((v, i) => {
     const d = data.disciplines[i];
-    points -= (parseFloat(d.points) || 0 + parseFloat(d.penalty) || 0) * (parseFloat(disciplines[i].multiplier) || 1);
+    points -= ((parseFloat(d.points) || 0) * (parseFloat(disciplines[i].multiplier) || 1)) + ((parseFloat(d.penalty) || 0) * (parseFloat(disciplines[i].faults) || 1));
     return null;
   });
 

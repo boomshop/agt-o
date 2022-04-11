@@ -7,8 +7,10 @@ export default function StarterDiscipline(props) {
 
   const status = Stati[data.state || 'default'].name;
   const color = Stati[data.state || 'default'].color;
-  const points = (parseFloat(data.points || 0) * parseFloat(data.multiplier || 1)) || '--';
-
+  const points = parseFloat(data.points) ? (parseFloat(data.points || 0) * parseFloat(data.multiplier || 1)).toFixed(2) : '--';
+  const pointsdetails = parseFloat(data.points) ? '(' + data.points + ' ' + (data.type === 'seconds' ? 'Sek.' : 'Fehler') + ')' : '';
+  const penalty = parseFloat(data.penalty) ? Math.round(parseFloat(data.penalty) * parseFloat(data.faults || 1)) : '--';
+  const penaltydetails = parseFloat(data.penalty) ? data.penalty + ' Fehler' : '';
   return (
     <div className="StarterDiscipline" key={ 'discipline' + data.number }>
       <span className="number">{ data.number }</span>
@@ -16,13 +18,13 @@ export default function StarterDiscipline(props) {
       <span className="description">{ data.description }</span>
       <span className="pointsi"><Icon>medal</Icon></span>
       <span className="pointsd">Punkte</span>
-      <span className="points">{ points }</span>
+      <span className="points">{ points } <span class="small">{ pointsdetails }</span></span>
       {
         parseInt(data.penalty || 0) ? <>
           <span className="penaltyi"><Icon>referee</Icon></span>
           <span className="penaltyd">Strafe</span>
-          <span className="penalty">{ parseInt(data.penalty || 0) }</span>
-          <span className="reason">({ data.reason })</span>
+          <span className="penalty">{ penalty }</span>
+          <span className="reason">({ penaltydetails }: { data.reason })</span>
         </> : null
       }
     </div>

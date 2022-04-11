@@ -40,7 +40,7 @@ export default function Referee(props) {
   }
   if (discipline) {
     discipline.teams.map((v, i) => {
-      entries.push(<RefereeTeam data={ v } user={ props.user } onEdit={ onEdit } key={ 'team' + i }/>);
+      entries.push(<RefereeTeam data={ v } user={ props.user } discipline={ discipline } onEdit={ onEdit } key={ 'team' + i }/>);
       if (edit && edit.id === v.id ) {
         edit = v;
       }
