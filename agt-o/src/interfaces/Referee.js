@@ -23,6 +23,7 @@ export default function Referee(props) {
   const entries = [];
   let discipline;
 
+  let nonav = true;
   if (disciplines.length) {
     disciplines.map((v, i) => {
       navigation.push({

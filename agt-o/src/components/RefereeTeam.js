@@ -22,7 +22,7 @@ export default function RefereeTeam(props) {
       <span className="title"><span className="title">{ data.name }</span><span className="state" style={ { background: color } }><Icon>status</Icon><span className="status">{ status }</span></span></span>
       <span className="pointsi"><Icon>medal</Icon></span>
       <span className="pointsd">Punkte</span>
-      <span className="points">{ points } <span class="small">({ pointsdetails })</span> { data.referee === user.id ? <Icon>user</Icon> : null }</span>
+      <span className="points">{ points } <span className="small">({ pointsdetails })</span> { data.referee === user.id ? <Icon>user</Icon> : null }</span>
       {
         parseFloat(data.penalty || 0) ? <>
           <span className="penaltyi"><Icon>referee</Icon></span>

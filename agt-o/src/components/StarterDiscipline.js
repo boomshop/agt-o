@@ -18,7 +18,7 @@ export default function StarterDiscipline(props) {
       <span className="description">{ data.description }</span>
       <span className="pointsi"><Icon>medal</Icon></span>
       <span className="pointsd">Punkte</span>
-      <span className="points">{ points } <span class="small">{ pointsdetails }</span></span>
+      <span className="points">{ points } <span className="small">{ pointsdetails }</span></span>
       {
         parseInt(data.penalty || 0) ? <>
           <span className="penaltyi"><Icon>referee</Icon></span>
