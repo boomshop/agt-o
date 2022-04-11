@@ -56,7 +56,7 @@ export default function CommandTeam(props) {
       <CommandImage image={ data.image } config={ config } request={ request } id={ data.id }/>
 
       <span className="team">
-        <span className="name">{ data.name }</span>
+        <span className="name" title={ data.name }>{ data.name }</span>
         <Icon>medal</Icon>
         <span className="points">{ points }</span>
         {
