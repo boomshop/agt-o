@@ -103,7 +103,7 @@ export default function Referee(props) {
       points: points || 0,
     });
   }
-console.log(edit, reason, penalty)
+
   const cls = edit && edit.reason === reason && parseFloat(edit.penalty) === parseFloat(penalty) ? 'disabled set' : 'set';
 
   const Map = props.config ? <iframe title="map" src={ props.config.map } /> : null;
