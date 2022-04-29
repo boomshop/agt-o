@@ -1,4 +1,11 @@
 <?
+function sortTeams($a, $b) {
+  if ($a['points'] == $b['points']) {
+    return 0;
+  }
+  return ($a['points'] > $b['points']) ? -1 : 1;
+}
+
 function handleRequest($data, $user, $role) {
   global $SQL, $_ERROR, $_CONFIG;
   $error = '';
@@ -45,6 +52,43 @@ function handleRequest($data, $user, $role) {
         $SQL->query($query);
       }
       $error = $SQL->lastError();
+      break;
+    case 'certificates':
+      $M = getCommandModel();
+      $oldest = array('date' => 0, 'team' => '');
+      foreach($M['teams'] as $team => $T) {
+        $points = 1000.0;
+        foreach($M['disciplines'] as $disc => $D) {
+          $points -= floatval($T['disciplines'][$disc]['points']) * floatval($D['multiplier']);
+          $points -= floatval($T['disciplines'][$disc]['penalty']) * floatval($D['faults']);
+        }
+        $M['teams'][$team]['points'] = $points;
+        $count = 0;
+        $birth = 0;
+        foreach($T['starters'] as $starter => $S) {
+          $birth += $S['birthday'];
+          $count ++;
+        }
+        $birth /= $count;
+        if ($birth >= $oldest['date']) {
+          $oldest['date'] = $birth;
+          $oldest['team'] = $team;
+        }
+        $M['teams'][$team]['oldest'] = false;
+      }
+      $M['teams'][$oldest['team']]['oldest'] = true;
+      uasort($M['teams'], 'sortTeams');
+      $place = 0;
+      $last = 1001;
+      foreach($M['teams'] as $team => $T) {
+        if ($T['points'] < $last)
+          $place ++;
+        echo $T['points'] . '-' . $place . "\n";
+        $M['teams'][$team]['place'] = $place;
+        $last = $T['points'];
+      }
+      print_r($M['teams']);
+      break;
   }
 
   return ['model' => getModel($user, $role), 'error' => $error ];

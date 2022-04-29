@@ -29,6 +29,7 @@ $_POWERS['command'] = [
   'editConfig',
   'editTeam',
   'editStarter',
+  'certificates',
 ];
 
 $_POWERS['photographer'] = [
