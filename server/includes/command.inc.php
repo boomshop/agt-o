@@ -54,8 +54,10 @@ function handleRequest($data, $user, $role) {
       $error = $SQL->lastError();
       break;
     case 'certificates':
+      include('includes/certificates.inc.php');
       $M = getCommandModel();
       $oldest = array('date' => 0, 'team' => '');
+      // calc points and oldest
       foreach($M['teams'] as $team => $T) {
         $points = 1000.0;
         foreach($M['disciplines'] as $disc => $D) {
@@ -77,17 +79,22 @@ function handleRequest($data, $user, $role) {
         $M['teams'][$team]['oldest'] = false;
       }
       $M['teams'][$oldest['team']]['oldest'] = true;
+      // sort by points
       uasort($M['teams'], 'sortTeams');
       $place = 0;
       $last = 1001;
+      // set place
       foreach($M['teams'] as $team => $T) {
         if ($T['points'] < $last)
           $place ++;
-        echo $T['points'] . '-' . $place . "\n";
         $M['teams'][$team]['place'] = $place;
         $last = $T['points'];
       }
-      print_r($M['teams']);
+      // generate certs
+      foreach($M['teams'] as $team => $T) {
+        certificate($T['starters'][0]['name'], $T['starters'][1]['name'], $T['name'], $T['place'], $T['image'], $T['oldest']);
+      }
+      // print_r($M['teams']);
       break;
   }
 
