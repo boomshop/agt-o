@@ -33,8 +33,8 @@ $_JSON = file_get_contents('php://input');
 $_DATA = get_object_vars(json_decode($_JSON));
 
 // debug, REMOVE!
-// $_SESSION['user'] = 1;
-// $_SESSION['role'] = "admin";
+// $_SESSION['user'] = 2;
+// $_SESSION['role'] = "command";
 
 // debug, REMOVE!
 // if ($_GET['action'])
