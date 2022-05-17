@@ -17,9 +17,24 @@ header {
       background: var(--color-red);
       color: white;
     }
+    button.certificates {
+      background: var(--color-red);
+      color: white;
+    }
     button.reopen {
       background: var(--color-green);
       color: white;
     }
   }
+}
+
+#certificates {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 128px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }

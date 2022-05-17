@@ -3,6 +3,7 @@ import Logout from '../components/Logout.js';
 import Refresh from '../components/Refresh.js';
 import CommandTeam from '../components/CommandTeam.js';
 import moment from 'moment';
+import { useState } from 'react';
 
 function canStart (teams) {
   for (let i = 0, m = teams.length; i < m; ++i ) {
@@ -23,6 +24,7 @@ function canStart (teams) {
 }
 export default function Command(props) {
   const { request, model, config } = props;
+  const [ certs, setCerts ] = useState(false);
 
   const entries = [];
   if (model.teams) {
@@ -55,11 +57,22 @@ export default function Command(props) {
     });
   }
 
+  function handleCertificates() {
+    setCerts(true);
+  }
+
   let matchtext;
   let matchbutton;
   if (config.ended) {
     matchtext = "Der Wettkampf wurde " + moment(parseInt(config.ended)).format('HH:mm:ss DD.MM.YYYY') + " beendet."
-    matchbutton = <button onClick={ handleReopen } className="reopen">Wieder eröffnen</button>
+    if (!certs) {
+      matchbutton = (
+        <>
+          <button onClick={ handleReopen } className="reopen">Wieder eröffnen</button>
+          <button onClick={ handleCertificates } className="certificates">Urkunden generieren</button>
+        </>
+      );
+    }
   } else if(config.started) {
     matchtext = "Der Wettkampf wurde " + moment(parseInt(config.started)).format('HH:mm:ss DD.MM.YYYY') + " gestartet."
     matchbutton = <button onClick={ handleEnd } className="end">Wettkampf beenden</button>
@@ -89,6 +102,7 @@ export default function Command(props) {
       <div className="Command List">
         { entries }
       </div>
+      { certs && <iframe src="https://agt-o.de/api.php?action=certificates" id="certificates" sandbox="allow-scripts allow-downloads"/> }
     </>
   );
 }
