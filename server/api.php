@@ -1,12 +1,13 @@
 <?
 header('Access-Control-Allow-Origin: http://localhost:3000', false);
 header('Access-Control-Allow-Credentials: true');
-header('Content-Type: application/json');
 
 session_set_cookie_params(['SameSite' => 'None', 'Secure' => true]);
 
-ini_set('display_errors', 0);
-error_reporting(E_ALL);
+ini_set('display_errors', 1);
+error_reporting(E_ERROR);
+
+$NODATA = false;
 
 include('includes/errors.inc.php');
 
@@ -39,6 +40,14 @@ $_DATA = get_object_vars(json_decode($_JSON));
 // debug, REMOVE!
 // if ($_GET['action'])
 //   $_DATA = $_GET;
+
+if($_GET['action'] && $_GET['action'] == 'certificates') {
+  $_DATA['action'] = 'certificates';
+  header('Content-Type: text/html');
+  $NODATA = true;
+} else {
+  header('Content-Type: application/json');
+}
 
 if ((!$_SESSION['user'] OR !$_SESSION['role']) AND $_DATA['action'] != 'login') {
   error(1);
@@ -97,5 +106,8 @@ if (!in_array($_DATA['action'], $_POWERS[$_SESSION['role']])) {
 
 include('includes/' . $_SESSION['role'] . '.inc.php');
 
-response(handleRequest($_DATA, $_SESSION['user'], $_SESSION['role']));
+if (!$NODATA)
+  response(handleRequest($_DATA, $_SESSION['user'], $_SESSION['role']));
+else
+  handleRequest($_DATA, $_SESSION['user'], $_SESSION['role']);
 ?>

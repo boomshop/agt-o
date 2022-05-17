@@ -90,12 +90,46 @@ function handleRequest($data, $user, $role) {
         $M['teams'][$team]['place'] = $place;
         $last = $T['points'];
       }
-      // generate certs
-      foreach($M['teams'] as $team => $T) {
-        certificate($T['starters'][0]['name'], $T['starters'][1]['name'], $T['name'], $T['place'], $T['image'], $T['oldest']);
+      // cleanup certs directory
+      $folder = "./certificates";
+      $files = glob($folder.'/*');
+      foreach($files as $file) {
+        if(is_file($file))
+          unlink($file);
       }
-      // print_r($M['teams']);
-      break;
+      // generate certs
+      $total = count($M['teams']);
+      $c = 0;
+      certHeader();
+      ob_flush();
+      flush();
+      foreach($M['teams'] as $team => $T) {
+        $percent = intVal(($c / $total) * 100) . '%';
+        echo '<script type="text/javascript">document.getElementById("bar").style.width="' . $percent . '";' . "\n";
+        echo 'document.getElementById("info").innerHTML = "' . $percent . '"</script>' . "\n";
+        ob_flush();
+        flush();
+        certificate($T['starters'][0]['name'], $T['starters'][1]['name'], $T['name'], $T['place'], $T['image'], $T['oldest']);
+        $c += 1;
+      }
+      echo '<script type="text/javascript">document.getElementById("bar").style.width="100%";' . "\n";
+      echo 'document.getElementById("info").innerHTML = "Fertig!"</script>' . "\n";
+      ob_flush();
+      flush();
+      // zip certs
+      $files = './certificates/';
+      $target = "./certificates/Urkunden.zip";
+      $zip = new ZipArchive;
+      if($zip -> open($target, ZipArchive::CREATE ) === TRUE) {
+        $dir = opendir($files);
+        while($file = readdir($dir)) {
+          if(is_file($files.$file)) {
+            $zip -> addFile($files.$file, $file);
+          }
+        }
+      }
+      certFooter();
+      return;
   }
 
   return ['model' => getModel($user, $role), 'error' => $error ];
