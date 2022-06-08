@@ -63,7 +63,7 @@ export default function Command(props) {
 
   let matchtext;
   let matchbutton;
-  if (config.ended) {
+  if (config && config.ended) {
     matchtext = "Der Wettkampf wurde " + moment(parseInt(config.ended)).format('HH:mm:ss DD.MM.YYYY') + " beendet."
     if (!certs) {
       matchbutton = (
@@ -73,10 +73,10 @@ export default function Command(props) {
         </>
       );
     }
-  } else if(config.started) {
+  } else if(config && config.started) {
     matchtext = "Der Wettkampf wurde " + moment(parseInt(config.started)).format('HH:mm:ss DD.MM.YYYY') + " gestartet."
     matchbutton = <button onClick={ handleEnd } className="end">Wettkampf beenden</button>
-  } else if (canStart(model.teams)) {
+  } else if (model && canStart(model.teams)) {
     matchtext = "Der Wettkampf hat noch nicht begonnen.";
     matchbutton = <button onClick={ handleStart } className="start">Wettkampf starten</button>
   } else {
