@@ -96,7 +96,7 @@ export default function Command(props) {
             { matchtext }
             { matchbutton }
           </div>
-          <h2>{ config.title }</h2>
+          <h2>{ config ? config.title : '' }</h2>
         </div>
       </header>
       <div className="Command List">
