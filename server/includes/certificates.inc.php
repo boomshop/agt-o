@@ -4,11 +4,11 @@ function certificate($Starter1, $Starter2, $Team, $Place, $Image, $Senior) {
   $SOURCE = './source/Urkunde.svg';
   $TARGET = './certificates/';
   $NAME = $Place . ' - ' . $Team . '.jpg';
-  $TEMP = './source/tmp.svg';
-  $IMAGES = './images/';
+  $TEMPSVG = './source/tmp.svg';
+  $TEMPIMG = './source/tmp.jpg';
 
   if ($Image) {
-    $img = 'data:image/jpeg;base64,' . base64_encode(file_get_contents($IMAGES . $Image));
+    $img = 'data:image/jpeg;base64,' . base64_encode(file_get_contents($Image));
   } else {
     $img = '';
   }
@@ -21,9 +21,9 @@ function certificate($Starter1, $Starter2, $Team, $Place, $Image, $Senior) {
   $string = str_replace('[[[IMAGE]]]', $img, $string);
   $string = str_replace('[[[SENIOR]]]', $Senior ? '1' : '0', $string);
 
-  $handle = fopen($TEMP, 'w');
+  $handle = fopen($TEMPSVG, 'w');
   fputs($handle, $string);
-  exec('convert "' . $TEMP . '" "' . $TARGET . $NAME . '"');
+  exec('convert "' . $TEMPSVG . '" "' . $TARGET . $NAME . '"');
 }
 
 function certHeader() {

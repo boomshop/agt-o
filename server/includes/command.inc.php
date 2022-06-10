@@ -1,4 +1,6 @@
 <?
+include('thumbnail.inc.php');
+
 function sortTeams($a, $b) {
   if ($a['points'] == $b['points']) {
     return 0;
@@ -109,7 +111,8 @@ function handleRequest($data, $user, $role) {
         echo 'document.getElementById("info").innerHTML = "' . $percent . '"</script>' . "\n";
         ob_flush();
         flush();
-        certificate($T['starters'][0]['name'], $T['starters'][1]['name'], $T['name'], $T['place'], $T['image'], $T['oldest']);
+        resizeImage('./images/' . $T['image'], './source/teamtmp.jpg', 1510, 1005, 0, 'center', 95);
+        certificate($T['starters'][0]['name'], $T['starters'][1]['name'], $T['name'], $T['place'], './source/teamtmp.jpg', $T['oldest']);
         $c += 1;
       }
       echo '<script type="text/javascript">document.getElementById("bar").style.width="100%";' . "\n";
