@@ -74,6 +74,8 @@ button {
   border-radius: var(--border-radius);
   padding: 4px;
   cursor: pointer;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 
@@ -165,12 +167,12 @@ h2 {
   font-weight: bold;
 }
 .true::after {
-  content: "񗍛";
+  content: "✔";
   font-family: AGT-O;
   background: var(--color-true);
 }
 .false::after {
-  content: "񗍚";
+  content: "✘";
   font-family: AGT-O;
   background: var(--color-false);
 }
