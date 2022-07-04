@@ -5,9 +5,41 @@ function resizeImage($image, $target, $width, $height, $max, $clip, $quality) {
 	$purename = substr($filename, 0, strrpos($filename, '.'));
 	$ext = strtolower(substr(strrchr($target, '.'), 1));
 
-	$srcSize = getimagesize($image);
-	$srcX = $srcSize[0];
-	$srcY = $srcSize[1];
+	// CREATE
+	if($extension == 'jpg' || $extension == 'jpeg') {
+		$srcImage = ImageCreateFromJpeg($image);
+		if (function_exists('exif_read_data')) {
+	    $exif = exif_read_data($image);
+	    if($exif && isset($exif['Orientation'])) {
+	      $orientation = $exif['Orientation'];
+	      if($orientation != 1){
+	        $deg = 0;
+	        switch ($orientation) {
+	          case 3:
+	            $deg = 180;
+	            break;
+	          case 6:
+	            $deg = 270;
+	            break;
+	          case 8:
+	            $deg = 90;
+	            break;
+	        }
+	        if ($deg) {
+	          $srcImage = imagerotate($srcImage, $deg, 0);
+	        }
+	      }
+	    }
+	  } // if function exists
+	} else if($extension == 'gif') {
+		$srcImage = ImageCreateFromGif($image);
+	} else if($extension == 'png') {
+		$srcImage = ImageCreateFromPNG($image);
+	}
+
+  // SIZING VARS
+	$srcX = imagesx($srcImage);
+	$srcY = imagesy($srcImage);
 	$srcRatio = $srcX / $srcY;
 
 	$clipX = 0;
@@ -57,17 +89,10 @@ function resizeImage($image, $target, $width, $height, $max, $clip, $quality) {
 		}
 	}
 
-	// CREATE
+  // RENDER
 	$destImage = imageCreateTruecolor($destX, $destY);
-	if($extension == 'jpg' || $extension == 'jpeg') {
-		$srcImage = ImageCreateFromJpeg($image);
-	} else if($extension == 'gif') {
-		$srcImage = ImageCreateFromGif($image);
-	} else if($extension == 'png') {
-		$srcImage = ImageCreateFromPNG($image);
-	}
 	imageCopyResampled($destImage, $srcImage, 0, 0, $clipX, $clipY, $destX, $destY, $srcX, $srcY);
-echo $image . '-'.file_exists($image).'-'.file_exists($target).'<br>';
+
 	// OUTPUT
 	if($ext == 'jpg' || $ext == 'jpeg') {
 		Imagejpeg($destImage, $target, $quality);
