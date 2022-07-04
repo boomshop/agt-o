@@ -3,16 +3,16 @@ import { useState } from 'react';
 import Number from './Number.js';
 
 export default function Points(props) {
-  const [ points, setPoints ] = useState(parseFloat(props.value) || 0);
+  const [ points, setPoints ] = useState(parseInt(props.value) || 0);
 
   function handleSet() {
-    props.onSet(points);
+    props.onSet(parseInt(points));
   }
   function changePoints(e) {
-    setPoints(e);
+    setPoints(parseInt(e));
   }
 
-  const cls = parseFloat(points) === parseFloat(props.value) ? 'disabled set' : 'set';
+  const cls = parseInt(points) === parseInt(props.value) ? 'disabled set' : 'set';
 
   return (
     <div className="Points">
