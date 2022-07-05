@@ -3,6 +3,7 @@
   align-items: center;
   padding: var(--gap);
   height: 96px;
+  border-bottom: 1px solid var(--color-light-gray);
 
   &:nth-child(even) {
     background: var(--color-even);
