@@ -9,6 +9,7 @@ This is a server-based (PHP) application with a REACT front-end to setup and run
 * Upload the contents of the server directory to your PHP-enabled webserver. It requires GDlib, EXIF and MySQL.
 * Make certificates and source writeable for your PHP user.
 * Set up your database. The database definition can be found in agt-o_structure.sql.
+* Configure the application in includes/config.inc.php.
 
 ### Front-end
 
