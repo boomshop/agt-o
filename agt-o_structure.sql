@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 06. Jul 2022 um 12:49
+-- Erstellungszeit: 06. Jul 2022 um 12:52
 -- Server-Version: 10.5.15-MariaDB-0+deb11u1
 -- PHP-Version: 7.4.28
 
@@ -35,7 +35,20 @@ CREATE TABLE IF NOT EXISTS `config` (
   `name` varchar(256) NOT NULL,
   `value` varchar(1024) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- TRUNCATE Tabelle vor dem Einfügen `config`
+--
+
+TRUNCATE TABLE `config`;
+--
+-- Daten für Tabelle `config`
+--
+
+INSERT IGNORE INTO `config` (`ID`, `name`, `value`) VALUES
+(1, 'started', ''),
+(2, 'ended', '');
 
 -- --------------------------------------------------------
 
@@ -53,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `disciplines` (
   `multiplier` float DEFAULT 1,
   `faults` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -70,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `progress` (
   `referee` int(11) NOT NULL,
   `date` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -84,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `referees` (
   `user` int(11) NOT NULL,
   `discipline` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -101,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `starters` (
   `g263` tinyint(1) DEFAULT 0,
   `disclaimer` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `number` int(11) DEFAULT NULL,
   `paid` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -133,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(256) DEFAULT NULL,
   `role` enum('admin','referee','starter','command','photographer') NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -152,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `valuations` (
   `referee` int(11) NOT NULL,
   `date` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
