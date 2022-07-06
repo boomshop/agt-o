@@ -7,13 +7,13 @@ This is a server-based (PHP) application with a REACT front-end to setup and run
 ### Webserver
 
 * Upload the contents of the server directory to your PHP-enabled webserver. It requires GDlib, EXIF and MySQL.
-* Make certificates and source writeable for your PHP user.
-* Set up your database. The database definition can be found in agt-o_structure.sql.
-* Configure the application in includes/config.inc.php.
+* Make `certificates` and `source` writeable for your PHP user.
+* Set up your database. The database definition can be found in `agt-o_structure.sql`.
+* Configure the application in `includes/config.inc.php`.
 
 ### Front-end
 
-* Make sure you have NPM installed on your system.
+* Make sure you have `NPM` installed on your system.
 * In the agt-o subdirectory run `npm ci`.
 * To build the application run `npm run build` in the agt-o subdirectory.
 * Upload the contents of the `build` subdirectory to the root of your server.
