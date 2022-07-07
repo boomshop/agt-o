@@ -1,5 +1,6 @@
 import './Number.scss';
 import { useState } from 'react';
+import Icon from './Icon.js';
 
 export default function Number(props) {
   const [ value, setValue ] = useState(parseFloat(props.value));
@@ -21,9 +22,9 @@ export default function Number(props) {
   }
   return (
     <div className="Number">
-      <button className="minus" onClick={ onMinus }>-</button>
+      <button className="minus" onClick={ onMinus }><Icon>minus</Icon></button>
       <input onChange={ onChange } type="number" value={ value } size="4" />
-      <button className="plus" onClick={ onPlus }>+</button>
+      <button className="plus" onClick={ onPlus }><Icon>plus</Icon></button>
     </div>
   )
 }
