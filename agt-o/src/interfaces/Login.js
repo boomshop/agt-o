@@ -36,13 +36,13 @@ export default function Login(props) {
       <div className="Login">
 
         {
-          failed ? <span className="warning">Login fehlgeschlagen</span> : null
+          failed ? <span className="warning">Anmeldung fehlgeschlagen</span> : null
         }
-        <span>Login</span>
+        <span>Benutzer</span>
         <input type="text" ref={ login } size="10" onKeyDown={ onKeyDown } />
-        <span>Password</span>
+        <span>Passwort</span>
         <input type="password" ref={ password } size="10" onKeyDown={ onKeyDown } />
-        <button onClick={ onSubmit } className="submit">Login</button>
+        <button onClick={ onSubmit } className="submit">Anmelden</button>
       </div>
     </>
   );
