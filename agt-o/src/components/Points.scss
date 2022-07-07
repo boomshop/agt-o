@@ -4,7 +4,7 @@
 
   > .points {
     flex: 1 1 auto;
-    height: 48px;
+    height: 64px;
     font-size: var(--font-size-h1);
     width: 100%;
     box-sizing: border-box;
@@ -12,24 +12,33 @@
   }
   > .set {
     box-sizing: border-box;
-    height: 48px;
-    flex: 0 0 64px;
+    height: 64px;
+    flex: 0 0 80px;
     margin-left: var(--gap);
     background: var(--color-red);
+    font-size: var(--font-size-large);
+    padding: 0 8px;
   }
   > .Number {
     margin-right: 24px;
 
-    > .plus {
-      font-size: var(--font-size-huge);
-      flex: 0 0 48px;
-    }
-    > .minus {
-      font-size: var(--font-size-huge);
-      flex: 0 0 48px;
+    > button {
+      flex: 0 0 64px;
+      width: 64px;
+      height: 64px;
+      --font-size-icon: 32px;
+
+      &.plus {
+      }
+      &.minus {
+      }
     }
     > input {
-      font-size: var(--font-size-huge);
+      font-size: 50px;
+      line-height: 52px;
+      background: transparent;
+      color: var(--color);
+      text-align: center;
     }
   }
 }
