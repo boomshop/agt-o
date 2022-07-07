@@ -42,3 +42,5 @@
 .icon.logo::before                 { font-family: 'AGT-O'; content: '񗍙'; }
 .icon.false::before                { font-family: 'AGT-O'; content: '񗍚'; }
 .icon.true::before                 { font-family: 'AGT-O'; content: '񗍛'; }
+.icon.minus::before                { font-family: 'AGT-O'; content: '񗍜'; }
+.icon.remove::before               { font-family: 'AGT-O'; content: '񗍜'; }
