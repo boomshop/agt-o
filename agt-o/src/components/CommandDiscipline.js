@@ -10,8 +10,14 @@ export default function CommandDiscipline(props) {
   const penalty = parseFloat(data.penalty) ? Math.round(parseFloat(data.penalty) * parseFloat(discipline.faults || 1)) : '--';
   const penaltydetails = parseFloat(data.penalty) ? data.penalty + ' Fehler' : '';
 
+  let title = '';
+  if (data.valuation_date && data.valuation_referee_name)
+    title = 'Bewertung durch ' + data.valuation_referee_name + ' um ' + moment(parseInt(data.valuation_date) * 1000).format('HH:mm:ss - DD.MM.YYYY');
+  if (data.penalty)
+    title += ' | Fehler: ' + data.reason;
+
   return (
-    <div className="CommandDiscipline" title={ data.valuation_date && data.valuation_referee_name ? 'Bewertung durch ' + data.valuation_referee_name + ' um ' + moment(parseInt(data.valuation_date) * 1000).format('HH:mm:ss - DD.MM.YYYY') : '' }>
+    <div className="CommandDiscipline" title={ title }>
         <span className={ "label " + data.progress || '' }>Disziplin { discipline.number }</span>
 
       <span className="points">
