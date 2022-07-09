@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  overflow-y: auto;
   position: relative;
 
   > .List {
@@ -37,11 +38,12 @@
     }
 
     > .State {
-      margin: 12px;
+      padding: 12px;
+      background: var(--color-blue);
     }
 
     > .Stopwatch {
-
+      background: var(--color-blue);
     }
 
     > .Points {
@@ -57,13 +59,14 @@
     }
 
     > .penalty {
+      background: var(--color-blue);
       display: grid;
       grid-template-areas:
         "plabel rlabel ."
         "penalty reason set";
       grid-template-columns: 128px minmax(auto, 188px) 64px;
       grid-gap: var(--gap);
-      margin: 0 16px;
+      padding: 0 16px;
       justify-content: center;
 
       > input {
