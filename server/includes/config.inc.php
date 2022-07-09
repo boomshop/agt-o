@@ -11,4 +11,6 @@ $_CONFIG['map'] = 'https://www.google.com/maps/d/u/0/embed?mid=1At3TG18s_8RkrubW
 
 $_CONFIG['images'] = 'https://agt-o.de/images/';
 $_CONFIG['upload'] = './images/';
+
+$_CONFIG['points'] = 5000;
 ?>

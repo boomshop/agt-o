@@ -40,7 +40,7 @@ export default function Starter(props) {
         {
           nav === 'disciplines' && props.model.disciplines ? <>
             <Blocker config={ config } />
-            <Progress data={ props.model.disciplines }/>
+            <Progress data={ props.model.disciplines } config={ config }/>
 
             <div className="List">
               { disciplines }

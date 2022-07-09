@@ -9,7 +9,7 @@ export default function CommandTeam(props) {
   const { request, data, disciplines, config } = props;
   const [ edit, setEdit ] = useState(false);
 
-  let points = 1000;
+  let points = parseInt(config.points || 0);
   data.disciplines.map((v, i) => {
     const d = data.disciplines[i];
     points -= ((parseFloat(d.points) || 0) * (parseFloat(disciplines[i].multiplier) || 1)) + ((parseFloat(d.penalty) || 0) * (parseFloat(disciplines[i].faults) || 1));

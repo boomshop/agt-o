@@ -13,7 +13,7 @@ include('includes/errors.inc.php');
 
 function response($data) {
   global $_CONFIG, $SQL;
-  $data['config'] = [ 'map' => $_CONFIG['map'], 'title' => $_CONFIG['title'], 'images' => $_CONFIG['images'] ];
+  $data['config'] = [ 'map' => $_CONFIG['map'], 'title' => $_CONFIG['title'], 'images' => $_CONFIG['images'], 'points' => $_CONFIG['points'] ];
   $res = $SQL->fetchMultiple('SELECT name, value FROM config');
   foreach($res as $key => $value) {
     $data['config'][$value['name']] = $value['value'];

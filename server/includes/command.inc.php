@@ -61,7 +61,7 @@ function handleRequest($data, $user, $role) {
       $oldest = array('date' => 0, 'team' => '');
       // calc points and oldest
       foreach($M['teams'] as $team => $T) {
-        $points = 1000.0;
+        $points = $_CONFIG['points'];
         foreach($M['disciplines'] as $disc => $D) {
           $points -= floatval($T['disciplines'][$disc]['points']) * floatval($D['multiplier']);
           $points -= floatval($T['disciplines'][$disc]['penalty']) * floatval($D['faults']);

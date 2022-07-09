@@ -12,7 +12,7 @@ export default function Progress(props) {
 
   const data = [];
   const colors = [];
-  let result = 1000;
+  let result = parseInt(props.config.points || 0);
   props.data.map((v, i) => {
     data.push({name: v.name, value: 1, number: v.number });
     colors.push(COLORS[v.state || 'default']);
